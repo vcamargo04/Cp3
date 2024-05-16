@@ -8,8 +8,10 @@ Projeto de revisão de API para os alunos do 2TDSPM da FIAP
  - [Spring Boot 3.2.5](https://spring.io/projects/spring-boot)
  - [Spring Data JPA](https://docs.spring.io/spring-data/jpa/reference/)
  - [Spring Web Starter](https://docs.spring.io/spring-boot/reference/web/index.html)
+ - [Spring Validation Starter](https://docs.spring.io/spring-framework/reference/core/validation/beanvalidation.html)
  - [H2 Database](http://h2database.com/html/main.html)
  - [REST](https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
+ - [DTO](https://martinfowler.com/eaaCatalog/dataTransferObject.html)
 
 ## Ferramentas
 
@@ -17,21 +19,21 @@ Projeto de revisão de API para os alunos do 2TDSPM da FIAP
  - [Postman](https://www.postman.com/)
 ## API Reference
 
-#### Obter todos os clientes (findAll)
+#### Obter todos os clientes (findAll clienteDTO)
 
 ```http
   GET /clientes
 ```
 
-#### Obter cliente por id (findById)
+#### Obter cliente por id (findById clienteDTO)
 
 ```http
   GET /clientes/${id}
 ```
 
-| Parâmetro | Tipo     | Descrição                         |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `Long`   | **Obrigatório**. Id do cliente a ser buscado |
+| Parâmetro | Tipo   | Descrição                                    |
+|:----------|:-------|:---------------------------------------------|
+| `id`      | `Long` | **Obrigatório**. Id do cliente a ser buscado |
 
 #### Gravar cliente (save)
 
@@ -44,14 +46,16 @@ Body:
 ```json
 {
     "nome": "Exemplo",
-    "email": "exemplo@email.com"
+    "email": "exemplo@email.com",
+    "senha": "123456"
 }
 ```
 
-| Parâmetro | Tipo     | Descrição                         |
-| :-------- | :------- | :-------------------------------- |
-| `nome`    | `String` | Nome do cliente a ser gravado     |
-| `email`   | `String` | E-mail do cliente a ser gravado   |
+| Parâmetro | Tipo     | Descrição                       |
+|:----------|:---------|:--------------------------------|
+| `nome`    | `String` | Nome do cliente a ser gravado   |
+| `email`   | `String` | E-mail do cliente a ser gravado |
+| `senha`   | `String` | Senha do cliente a ser gravado  |
 
 #### Atualizar cliente (update)
 
@@ -59,23 +63,25 @@ Body:
   PUT /clientes/${id}
 ```
 
-| Parâmetro | Tipo     | Descrição                         |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `Long`   | **Obrigatório**. Id do cliente a ser atualizado |
+| Parâmetro | Tipo   | Descrição                                       |
+|:----------|:-------|:------------------------------------------------|
+| `id`      | `Long` | **Obrigatório**. Id do cliente a ser atualizado |
 
 Body:
 
 ```json
 {
     "nome": "Exemplo",
-    "email": "exemplo@email.com"
+    "email": "exemplo@email.com",
+    "senha": "123456"
 }
 ```
 
-| Parâmetro | Tipo     | Descrição                         |
-| :-------- | :------- | :-------------------------------- |
-| `nome`    | `String` | Nome do cliente a ser atualizado     |
-| `email`   | `String` | E-mail do cliente a ser atualizado   |
+| Parâmetro | Tipo     | Descrição                          |
+|:----------|:---------|:-----------------------------------|
+| `nome`    | `String` | Nome do cliente a ser atualizado   |
+| `email`   | `String` | E-mail do cliente a ser atualizado |
+| `senha`   | `String` | Senha do cliente a ser atualizado  |
 
 #### Excluir cliente (delete)
 
@@ -83,6 +89,6 @@ Body:
   DELETE /clientes/${id}
 ```
 
-| Parâmetro | Tipo     | Descrição                         |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `Long`   | **Obrigatório**. Id do cliente a ser excluído |
+| Parâmetro | Tipo   | Descrição                                     |
+|:----------|:-------|:----------------------------------------------|
+| `id`      | `Long` | **Obrigatório**. Id do cliente a ser excluído |
