@@ -1,7 +1,9 @@
 package br.com.fiap.revisaoapi.controller;
 
+import br.com.fiap.revisaoapi.dto.ClienteDTO;
 import br.com.fiap.revisaoapi.model.Cliente;
 import br.com.fiap.revisaoapi.service.ClienteService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,25 +23,25 @@ public class ClienteController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<Cliente>> findAll(@PageableDefault Pageable pageable) {
-        Page<Cliente> clientes = clienteService.findAll(pageable);
-        return ResponseEntity.ok(clientes);
+    public ResponseEntity<Page<ClienteDTO>> findAll(@PageableDefault Pageable pageable) {
+        Page<ClienteDTO> clientesDTO = clienteService.findAll(pageable);
+        return ResponseEntity.ok(clientesDTO);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Cliente> findById(@PathVariable Long id) {
-        Cliente cliente = clienteService.findById(id);
-        return ResponseEntity.ok(cliente);
+    public ResponseEntity<ClienteDTO> findById(@PathVariable Long id) {
+        ClienteDTO clienteDTO = clienteService.findById(id);
+        return ResponseEntity.ok(clienteDTO);
     }
 
     @PostMapping
-    public ResponseEntity<Cliente> save(@RequestBody Cliente cliente) {
+    public ResponseEntity<Cliente> save(@Valid @RequestBody Cliente cliente) {
         Cliente clienteSalvo = clienteService.save(cliente);
         return new ResponseEntity<>(clienteSalvo, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Cliente> update(@PathVariable Long id, @RequestBody Cliente cliente) {
+    public ResponseEntity<Cliente> update(@PathVariable Long id, @Valid @RequestBody Cliente cliente) {
         Cliente clienteSalvo = clienteService.update(id, cliente);
         return new ResponseEntity<>(clienteSalvo, HttpStatus.CREATED);
     }
