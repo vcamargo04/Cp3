@@ -1,6 +1,8 @@
 package br.com.fiap.revisaoapi.dto;
 
-public class ClienteDTO {
+import org.springframework.hateoas.RepresentationModel;
+
+public class ClienteDTO extends RepresentationModel<ClienteDTO> {
     private Long id;
     private String nome;
     private String email;

@@ -15,15 +15,14 @@ import java.util.Optional;
 @Service
 public class ClienteService {
     private final ClienteRepository clienteRepository;
-
+    private static final Pageable customPageable = PageRequest.of(0, 3, Sort.by("nome").ascending());
     @Autowired
     public ClienteService(ClienteRepository clienteRepository) {
         this.clienteRepository = clienteRepository;
     }
 
-    public Page<ClienteDTO> findAll(Pageable pageable) {
-        pageable = PageRequest.of(0, 3, Sort.by("nome").ascending());
-        return clienteRepository.findAll(pageable).map(this::toDTO);
+    public Page<ClienteDTO> findAll() {
+        return clienteRepository.findAll(customPageable).map(this::toDTO);
     }
 
     public ClienteDTO findById(Long id) {
