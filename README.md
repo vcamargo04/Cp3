@@ -9,6 +9,8 @@ Projeto de revisão de API para os alunos do 2TDSPM da FIAP
  - [Spring Data JPA](https://docs.spring.io/spring-data/jpa/reference/)
  - [Spring Web Starter](https://docs.spring.io/spring-boot/reference/web/index.html)
  - [Spring Validation Starter](https://docs.spring.io/spring-framework/reference/core/validation/beanvalidation.html)
+ - [Spring HATEOAS](https://docs.spring.io/spring-hateoas/docs/current/reference/html/)
+ - [Springdoc OpenAPI + Swagger](https://springdoc.org/)
  - [H2 Database](http://h2database.com/html/main.html)
  - [REST](https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
  - [DTO](https://martinfowler.com/eaaCatalog/dataTransferObject.html)
